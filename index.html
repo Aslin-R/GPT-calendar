@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calendar">
+        <header>
+            <button id="prev-month">Previous Month</button>
+            <h1 id="current-month">Month Year</h1>
+            <button id="next-month">Next Month</button>
+        </header>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sun</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                </tr>
+            </thead>
+            <tbody id="calendar-body">
+                <!-- Calendar cells will be generated here -->
+            </tbody>
+        </table>
+    </div>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        .calendar {
+            width: 300px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .nav-button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .nav-button:hover {
+            background-color: #2980b9;
+        }
+        
+        h1 {
+            font-size: 20px;
+            color: #333;
+            margin: 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .week-day {
+            text-align: center;
+            padding: 10px 0;
+            font-weight: bold;
+            background-color: #f2f2f2;
+        }
+        
+        td {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #fff;
+        }
+        
+        td:hover {
+            background-color: #f2f2f2;
+        }
+        
+    </style>
+    <script>
+        // Get the current date
+const currentDate = new Date();
+
+// Function to render the calendar for a given month and year
+function renderCalendar(year, month) {
+    const calendarBody = document.getElementById("calendar-body");
+    const currentMonth = new Date(year, month, 1);
+    const lastDayOfMonth = new Date(year, month + 1, 0).getDate();
+    const firstDayOfWeek = currentMonth.getDay();
+
+    // Clear the calendar
+    calendarBody.innerHTML = '';
+
+    // Fill in the previous month's days if necessary
+    for (let i = 0; i < firstDayOfWeek; i++) {
+        const cell = document.createElement("td");
+        cell.textContent = '';
+        calendarBody.appendChild(cell);
+    }
+
+    // Fill in the current month's days
+    for (let day = 1; day <= lastDayOfMonth; day++) {
+        const cell = document.createElement("td");
+        cell.textContent = day;
+        calendarBody.appendChild(cell);
+    }
+}
+
+// Event listeners for changing the month
+document.getElementById("prev-month").addEventListener("click", () => {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
+});
+
+document.getElementById("next-month").addEventListener("click", () => {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
+});
+
+// Initial rendering
+renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
+
+    </script>
+</body>
+</html>
