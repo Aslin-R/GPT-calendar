@@ -9,22 +9,20 @@
 <body>
     <div class="calendar">
         <header>
-            <button id="prev-month">Previous Month</button>
             <h1 id="current-month">Month Year</h1>
-            <button id="next-month">Next Month</button>
+            <button id="prev-month" class="nav-button">Previous Month</button>
+            <button id="next-month" class="nav-button">Next Month</button>
         </header>
+        <div class="week-days">
+            <div class="week-day">Sun</div>
+            <div class="week-day">Mon</div>
+            <div class="week-day">Tue</div>
+            <div class="week-day">Wed</div>
+            <div class="week-day">Thu</div>
+            <div class="week-day">Fri</div>
+            <div class="week-day">Sat</div>
+        </div>
         <table>
-            <thead>
-                <tr>
-                    <th>Sun</th>
-                    <th>Mon</th>
-                    <th>Tue</th>
-                    <th>Wed</th>
-                    <th>Thu</th>
-                    <th>Fri</th>
-                    <th>Sat</th>
-                </tr>
-            </thead>
             <tbody id="calendar-body">
                 <!-- Calendar cells will be generated here -->
             </tbody>

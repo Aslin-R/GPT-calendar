@@ -1,63 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-        }
-        
-        .calendar {
-            width: 300px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .nav-button {
-            background-color: #3498db;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
-        .nav-button:hover {
-            background-color: #2980b9;
-        }
-        
-        h1 {
-            font-size: 20px;
-            color: #333;
-            margin: 0;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        .week-day {
-            text-align: center;
-            padding: 10px 0;
-            font-weight: bold;
-            background-color: #f2f2f2;
-        }
-        
-        td {
-            text-align: center;
-            padding: 10px 0;
-            background-color: #fff;
-        }
-        
-        td:hover {
-            background-color: #f2f2f2;
-        }
-        
-   
+.calendar {
+    width: 300px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.nav-button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.nav-button:hover {
+    background-color: #2980b9;
+}
+
+h1 {
+    font-size: 20px;
+    color: #333;
+    margin: 0;
+    text-align: center;
+}
+
+.week-days {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f2f2f2;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.week-day {
+    text-align: center;
+    width: calc(100% / 7);
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+td:hover {
+    background-color: #f2f2f2;
+}
