@@ -1,43 +1,25 @@
+// Get the current month and year
+var currDate = new Date();
+var currMonth = currDate.getMonth();
+var currYear = currDate.getFullYear();
 
-        // Get the current date
-const currentDate = new Date();
+// Display the current month's calendar
+renderCalendar(currMonth, currYear);
 
-// Function to render the calendar for a given month and year
-function renderCalendar(year, month) {
-    const calendarBody = document.getElementById("calendar-body");
-    const currentMonth = new Date(year, month, 1);
-    const lastDayOfMonth = new Date(year, month + 1, 0).getDate();
-    const firstDayOfWeek = currentMonth.getDay();
+// Function to render the calendar
+function renderCalendar(month, year) {
+  // Get the number of days in the month
+  var numberOfDaysInMonth = new Date(year, month + 1, 0).getDate();
 
-    // Clear the calendar
-    calendarBody.innerHTML = '';
+  // Create a list element to store the days of the month
+  var daysList = document.querySelector('.days');
+  daysList.innerHTML = '';
 
-    // Fill in the previous month's days if necessary
-    for (let i = 0; i < firstDayOfWeek; i++) {
-        const cell = document.createElement("td");
-        cell.textContent = '';
-        calendarBody.appendChild(cell);
-    }
-
-    // Fill in the current month's days
-    for (let day = 1; day <= lastDayOfMonth; day++) {
-        const cell = document.createElement("td");
-        cell.textContent = day;
-        calendarBody.appendChild(cell);
-    }
+  // Iterate over the days of the month and add them to the list element
+  for (var i = 1; i <= numberOfDaysInMonth; i++) {
+    var dayElement = document.createElement('li');
+    dayElement.classList.add('day');
+    dayElement.textContent = i;
+    daysList.appendChild(dayElement);
+  }
 }
-
-// Event listeners for changing the month
-document.getElementById("prev-month").addEventListener("click", () => {
-    currentDate.setMonth(currentDate.getMonth() - 1);
-    renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
-});
-
-document.getElementById("next-month").addEventListener("click", () => {
-    currentDate.setMonth(currentDate.getMonth() + 1);
-    renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
-});
-
-// Initial rendering
-renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
-
