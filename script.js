@@ -2,12 +2,20 @@
 
 const calendarDates = document.getElementById('calendar-dates');
 const currentYearElement = document.getElementById('current-year');
+const currentMonthElement = document.getElementById('current-month'); // Added for the month name
+
+const monthNames = [
+    'January', 'February', 'March', 'April',
+    'May', 'June', 'July', 'August',
+    'September', 'October', 'November', 'December'
+];
 
 const today = new Date();
 const currentYear = today.getFullYear();
 const currentMonth = today.getMonth();
 
 currentYearElement.textContent = currentYear;
+currentMonthElement.textContent = monthNames[currentMonth]; // Set the initial month name
 
 function generateCalendar() {
     // Clear existing dates
