@@ -38,3 +38,23 @@ body {
   grid-template-columns: repeat(7, 1fr);
   gap: 10px;
 }
+
+/* Add styles for the navigation arrows */
+.nav-arrows {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prev-month, .next-month {
+  cursor: pointer;
+  font-size: 20px;
+  margin: 0 10px;
+}
+
+.current-date {
+  background-color: #007bff; /* Highlight color for the current date */
+  color: white;
+  border-radius: 50%;
+  padding: 4px;
+}
