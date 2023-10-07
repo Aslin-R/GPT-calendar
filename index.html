@@ -1,121 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Professional Calendar App</title>
-  <style>
-    .calendar {
-      width: 600px;
-      margin: 0 auto;
-    }
-
-    .calendar-header {
-      text-align: center;
-      padding: 10px;
-      border-bottom: 1px solid black;
-    }
-
-    .month-picker {
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .year {
-      font-size: 16px;
-      font-weight: bold;
-    }
-
-    .days {
-      width: 100%;
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    .day {
-      width: 5%;
-      height: 100px;
-      text-align: center;
-      border: 1px solid black;
-    }
-
-    .date {
-      font-size: 14px;
-    }
-
-    .arrow {
-      width: 10px;
-      height: 10px;
-      cursor: pointer;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Calendar</title>
 </head>
 <body>
-  <div class="calendar">
-    <div class="calendar-header">
-      <span class="month-picker"></span>
-      <span class="year"></span>
-
-      <div class="arrow arrow-left"></div>
-      <div class="arrow arrow-right"></div>
+    <div class="calendar">
+        <div class="calendar-header">
+            <h1 id="current-year">2023</h1>
+        </div>
+        <div class="calendar-days">
+            <div class="day">Sun</div>
+            <div class="day">Mon</div>
+            <div class="day">Tue</div>
+            <div class="day">Wed</div>
+            <div class="day">Thu</div>
+            <div class="day">Fri</div>
+            <div class="day">Sat</div>
+        </div>
+        <div class="calendar-dates" id="calendar-dates">
+            <!-- Dates will be populated here with JavaScript -->
+        </div>
     </div>
-    <div class="days">
-      <div class="day">Sun</div>
-      <div class="day">Mon</div>
-      <div class="day">Tue</div>
-      <div class="day">Wed</div>
-      <div class="day">Thr</div>
-      <div class="day">Fri</div>
-      <div class="day">Sat</div>
-    </div>
-  </div>
-
-  <script>
-    // Get the current month and year
-    var currDate = new Date();
-    var currMonth = currDate.getMonth();
-    var currYear = currDate.getFullYear();
-
-    // Display the current month's calendar
-    renderCalendar(currMonth, currYear);
-
-    // Function to render the calendar
-    function renderCalendar(month, year) {
-      // Get the number of days in the month
-      var numberOfDaysInMonth = new Date(year, month + 1, 0).getDate();
-
-      // Set the month and year in the calendar header
-      var monthPickerElement = document.querySelector('.month-picker');
-      monthPickerElement.textContent = new Date(year, month, 1).toLocaleString('short');
-      var yearElement = document.querySelector('.year');
-      yearElement.textContent = year;
-
-      // Clear the days element
-      var daysElement = document.querySelector('.days');
-      daysElement.innerHTML = '';
-
-      // Iterate over the days of the month and add them to the days element
-      for (var i = 1; i <= numberOfDaysInMonth; i++) {
-        var dayElement = document.createElement('div');
-        dayElement.classList.add('day');
-
-        // Add the day number to the element
-        var dateElement = document.createElement('span');
-        dateElement.classList.add('date');
-        dateElement.textContent = i;
-        dayElement.appendChild(dateElement);
-
-        // Add the day element to the days element
-        daysElement.appendChild(dayElement);
-      }
-    }
-
-    // Handle the arrow clicks
-    document.querySelector('.arrow-left').addEventListener('click', function() {
-      renderCalendar(currMonth - 1, currYear);
-    });
-
-    document.querySelector('.arrow-right').addEventListener('click', function() {
-      renderCalendar(currMonth + 1, currYear);
-    });
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>

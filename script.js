@@ -1,25 +1,32 @@
-// Get the current month and year
-var currDate = new Date();
-var currMonth = currDate.getMonth();
-var currYear = currDate.getFullYear();
+// JavaScript to populate calendar dates
 
-// Display the current month's calendar
-renderCalendar(currMonth, currYear);
+const calendarDates = document.getElementById('calendar-dates');
+const currentYearElement = document.getElementById('current-year');
 
-// Function to render the calendar
-function renderCalendar(month, year) {
-  // Get the number of days in the month
-  var numberOfDaysInMonth = new Date(year, month + 1, 0).getDate();
+const today = new Date();
+const currentYear = today.getFullYear();
+const currentMonth = today.getMonth();
 
-  // Create a list element to store the days of the month
-  var daysList = document.querySelector('.days');
-  daysList.innerHTML = '';
+currentYearElement.textContent = currentYear;
 
-  // Iterate over the days of the month and add them to the list element
-  for (var i = 1; i <= numberOfDaysInMonth; i++) {
-    var dayElement = document.createElement('li');
-    dayElement.classList.add('day');
-    dayElement.textContent = i;
-    daysList.appendChild(dayElement);
-  }
+function generateCalendar() {
+    // Clear existing dates
+    calendarDates.innerHTML = '';
+
+    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+    const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+
+    for (let i = 0; i < firstDay; i++) {
+        // Add empty cells for days before the first day of the month
+        const emptyCell = document.createElement('div');
+        calendarDates.appendChild(emptyCell);
+    }
+
+    for (let day = 1; day <= daysInMonth; day++) {
+        const dateCell = document.createElement('div');
+        dateCell.textContent = day;
+        calendarDates.appendChild(dateCell);
+    }
 }
+
+generateCalendar();
